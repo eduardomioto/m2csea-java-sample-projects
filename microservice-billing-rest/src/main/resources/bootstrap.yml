@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: microservice-billing-rest
+
+---
+spring:
+ profiles: default
+ cloud:
+  consul:
+   host: 127.0.0.1
+   port: 8500
+
+services:
+  access-manager:
+    url: http://localhost:10001/access
+    name: Access Manager Service
+  user-manager:
+    url: http://localhost:10001/user
+    name: User Manager Service
+  fare:
+    url: http://localhost:10001/fare
+    name: Fare Service

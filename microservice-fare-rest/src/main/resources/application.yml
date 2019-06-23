@@ -1,0 +1,17 @@
+ribbon:
+  ServerListRefreshInterval: 1000
+
+endpoints:
+  health:
+    sensitive: false
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+management:
+  security:
+    enabled: false
+
+server:
+  port: 10008

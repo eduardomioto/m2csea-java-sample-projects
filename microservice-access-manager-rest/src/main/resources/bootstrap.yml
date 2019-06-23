@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: microservice-access-manager-rest
+
+---
+spring:
+ profiles: default
+ cloud:
+  consul:
+   host: 127.0.0.1
+   port: 8500

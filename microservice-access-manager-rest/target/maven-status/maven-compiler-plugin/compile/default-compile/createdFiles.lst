@@ -1,0 +1,5 @@
+br\com\mioto\cloud\vo\Access.class
+br\com\mioto\cloud\AccessManagerRestApp.class
+br\com\mioto\cloud\controllers\ConsulController.class
+br\com\mioto\cloud\controllers\AccessManagerController.class
+br\com\mioto\cloud\vo\Microservice.class

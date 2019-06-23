@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: microservice-basket-rest
+
+---
+spring:
+ profiles: default
+ cloud:
+  consul:
+   host: 127.0.0.1
+   port: 8500
+
+services:
+  access-manager:
+    url: http://localhost:10001/access
+    name: Access Manager
+  user-manager:
+    url: http://localhost:10001/user
+    name: User Manager

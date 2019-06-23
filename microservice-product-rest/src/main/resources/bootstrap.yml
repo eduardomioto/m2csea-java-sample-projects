@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: microservice-product-rest
+
+---
+spring:
+ profiles: default
+ cloud:
+  consul:
+   host: 127.0.0.1
+   port: 8500
+
+services:
+  fare:
+    url: http://localhost:10008/fare
+    name: Fare Calculator
+  access-manager:
+    url: http://localhost:10001/access
+    name: Access Manager
+  user-manager:
+    url: http://localhost:10017/user
+    name: User Manager

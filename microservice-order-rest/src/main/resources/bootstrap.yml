@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: microservice-order-rest
+
+---
+spring:
+ profiles: default
+ cloud:
+  consul:
+   host: 127.0.0.1
+   port: 8500
+
+services:
+  access-manager:
+    url: http://localhost:10001/access
+    name: Access Manager Service
+  user-manager:
+    url: http://localhost:10017/users
+    name: User Manager Service
+  product:
+    url: http://localhost:10015/products
+    name: Product Service
+  delivery:
+    url: http://localhost:10014/deliveries
+    name: Delivery Service
+  benefits:
+    url: http://localhost:10004/benefits
+    name: Benefits Service
+  billing:
+    url: http://localhost:10005/billing
+    name: Billing Service
+  mail-relay:
+    url: http://localhost:10010/mailrelay
+    name: Mail-Relay Service

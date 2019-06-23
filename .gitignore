@@ -42,3 +42,32 @@ hs_err_pid*
 
 # Node Modules
 node_modules/
+
+# Log Files #
+*.log
+*.logs
+logs
+
+# IDE Files #
+settings.*
+/target/
+/.settings/
+/.classpath
+/.idea/
+
+# Npm - JS - NodeJS - Instabul - Grunt ###
+/node-modules/
+node_modules
+npm-debug.log*
+pids
+*.pid
+*.seed
+.nyc_output
+.grunt
+.lock-wscript
+.npm
+.node_repl_history
+lib-cov
+coverage
+build/Release
+jspm_packages

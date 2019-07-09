@@ -9,8 +9,7 @@ spring:
   consul:
    host: 127.0.0.1
    port: 8500
-
-services:
+ services:
   access-manager:
     url: http://localhost:10001/access
     name: Access Manager Service
@@ -20,3 +19,21 @@ services:
   fare:
     url: http://localhost:10001/fare
     name: Fare Service
+---
+spring:
+ profiles: dev
+ cloud:
+  consul:
+   host: consul
+   port: 8500
+ services:
+  access-manager:
+    url: http://access-manager:10001/access
+    name: Access Manager Service
+  user-manager:
+    url: http://user-manager:10001/user
+    name: User Manager Service
+  fare:
+    url: http://fare:10001/fare
+    name: Fare Service
+

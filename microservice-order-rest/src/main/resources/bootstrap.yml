@@ -9,8 +9,7 @@ spring:
   consul:
    host: 127.0.0.1
    port: 8500
-
-services:
+ services:
   access-manager:
     url: http://localhost:10001/access
     name: Access Manager Service
@@ -32,3 +31,33 @@ services:
   mail-relay:
     url: http://localhost:10010/mailrelay
     name: Mail-Relay Service
+---
+spring: 
+ profiles: dev
+ cloud:
+  consul:
+   host: consul
+   port: 8500
+ services:
+  access-manager:
+    url: http://access-manager:10001/access
+    name: Access Manager Service
+  user-manager:
+    url: http://user-manager:10017/users
+    name: User Manager Service
+  product:
+    url: http://product:10015/products
+    name: Product Service
+  delivery:
+    url: http://delivery:10014/deliveries
+    name: Delivery Service
+  benefits:
+    url: http://benefits:10004/benefits
+    name: Benefits Service
+  billing:
+    url: http://billing:10005/billing
+    name: Billing Service
+  mail-relay:
+    url: http://mail-relay:10010/mailrelay
+    name: Mail-Relay Service
+

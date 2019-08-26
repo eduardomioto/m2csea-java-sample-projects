@@ -1,4 +1,4 @@
-MC2PD - Microservice Communication Critical Path Discovery - Java Sample Projects
+M2CSEA - Java Sample Projects
 --------------
 [![Build Status](https://travis-ci.org/eduardomioto/mc2pd-java-sample-projects.svg?branch=master)](https://travis-ci.org/eduardomioto/mc2pd-java-sample-projects)
 

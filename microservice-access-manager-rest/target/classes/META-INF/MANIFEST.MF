@@ -3,7 +3,7 @@ Implementation-Title: microservice-access-manager-rest
 Implementation-Version: 1.0.0
 Built-By: 320058681
 Implementation-Vendor-Id: br.com.mioto.cloud.mc2pd
-Build-Jdk: 1.8.0_201
+Build-Jdk: 1.8.0_221
 Implementation-URL: http://projects.spring.io/spring-boot/microservice
  -access-manager-rest/
 Created-By: Maven Integration for Eclipse

@@ -73,4 +73,3 @@ build/Release
 jspm_packages
 */.settings/*
 */target/*
-microservice-access-manager-rest/target/*

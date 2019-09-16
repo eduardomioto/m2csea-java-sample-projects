@@ -9,3 +9,10 @@ spring:
   consul:
    host: 127.0.0.1
    port: 8500
+---
+spring:
+ profiles: dev
+ cloud:
+  consul:
+   host: consul
+   port: 8500

@@ -28,12 +28,12 @@ spring:
    port: 8500
  services:
   access-manager:
-    url: http://access-manager:10001/access
+    url: http://localhost:10001/access
     name: Access Manager Service
   user-manager:
-    url: http://user-manager:10001/user
+    url: http://localhost:10001/user
     name: User Manager Service
   fare:
-    url: http://fare:10001/fare
+    url: http://localhost:10001/fare
     name: Fare Service
 

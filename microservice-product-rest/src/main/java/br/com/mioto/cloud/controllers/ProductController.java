@@ -1,9 +1,8 @@
 package br.com.mioto.cloud.controllers;
 
-import br.com.mioto.cloud.services.AccessManagerService;
-import br.com.mioto.cloud.services.FareService;
-import br.com.mioto.cloud.vo.Access;
-import br.com.mioto.cloud.vo.Fare;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import br.com.mioto.cloud.vo.Product;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
+import br.com.mioto.cloud.dao.ResponseTimeDAO;
+import br.com.mioto.cloud.services.AccessManagerService;
+import br.com.mioto.cloud.services.FareService;
+import br.com.mioto.cloud.vo.Access;
+import br.com.mioto.cloud.vo.Fare;
+import br.com.mioto.cloud.vo.Product;
 
 @RequestMapping( value = "/products" )
 @RestController
@@ -34,12 +35,15 @@ public class ProductController {
     @Autowired
     private FareService fareService;
 
+    @Autowired
+    ResponseTimeDAO responseTimeDAO;
+
 	@RequestMapping( method = RequestMethod.GET )
 	@ResponseBody
 	public List<Product> getProducts() {
 
-		Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
-		List<Product> list = new ArrayList<Product>();
+		final Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
+		final List<Product> list = new ArrayList<Product>();
 
 		Product product = new Product();
 		product.setId(1);
@@ -68,10 +72,10 @@ public class ProductController {
 	@RequestMapping( value = "/{id}", method = RequestMethod.GET )
 	@ResponseBody
 	public Product getProduct(@PathVariable( "id" ) Integer id) {
-		Product product = new Product();
+		final Product product = new Product();
 		product.setId(id);
 
-		Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
+		final Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
 
 		if(id  == 1){
 			product.setName("Product A");
@@ -88,14 +92,14 @@ public class ProductController {
 		}
 		return product;
 	}
-	
+
 	@RequestMapping( value = "/{id}/fare", method = RequestMethod.GET )
 	@ResponseBody
 	public Product getProductFare(@PathVariable( "id" ) Integer id) {
-		Product product = new Product();
+		final Product product = new Product();
 		product.setId(id);
 
-        Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
+        final Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
 
 		if(id  == 1){
 			product.setName("Product A");
@@ -112,7 +116,7 @@ public class ProductController {
 		}
 
         log.info("CalculateFare >> Preparing to Send Call");
-        Fare fare = restTemplate.getForObject(fareService.getUrl(), Fare.class);
+        final Fare fare = restTemplate.getForObject(fareService.getUrl(), Fare.class);
         log.info("fare: {}", fare);
         log.info("CalculateFare <<  Fare Received Successfully");
 

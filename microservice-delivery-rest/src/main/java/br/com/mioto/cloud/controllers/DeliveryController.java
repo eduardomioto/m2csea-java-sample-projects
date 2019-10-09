@@ -1,10 +1,7 @@
 package br.com.mioto.cloud.controllers;
 
-import br.com.mioto.cloud.services.AccessManagerService;
-import br.com.mioto.cloud.services.FareService;
-import br.com.mioto.cloud.vo.Access;
-import br.com.mioto.cloud.vo.Delivery;
-import br.com.mioto.cloud.vo.Fare;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Date;
+import br.com.mioto.cloud.dao.ResponseTimeDAO;
+import br.com.mioto.cloud.services.AccessManagerService;
+import br.com.mioto.cloud.services.FareService;
+import br.com.mioto.cloud.vo.Access;
+import br.com.mioto.cloud.vo.Delivery;
+import br.com.mioto.cloud.vo.Fare;
 
 @RequestMapping( value = "/deliveries" )
 @RestController
@@ -31,18 +33,21 @@ public class DeliveryController {
     @Autowired
     private FareService fareService;
 
+    @Autowired
+    ResponseTimeDAO responseTimeDAO;
+
 	@RequestMapping( method = RequestMethod.GET )
 	@ResponseBody
 	public Delivery getDelivery() {
-		
+
 		log.info("Basket Rest Service >> getDelivery");
 
-		Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
+		final Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
 
-        Delivery delivery = new Delivery();
+        final Delivery delivery = new Delivery();
 
         log.info("CalculateFare >> Preparing to Send Call");
-		Fare fare = restTemplate.getForObject(fareService.getUrl(), Fare.class);
+		final Fare fare = restTemplate.getForObject(fareService.getUrl(), Fare.class);
 		log.info("CalculateFare <<  Fare Received Successfully");
 
         delivery.setAddress("Rua example");

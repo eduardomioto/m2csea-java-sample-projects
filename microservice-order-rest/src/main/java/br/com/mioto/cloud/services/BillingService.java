@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BillingService {
 
-	@Value("${services.billing.name}")
+    @Value("Billing Service")
     private String name;
 
-	@Value("${services.billing.url}")
-	private String url;
+    @Value("http://localhost:10017/user")
+    private String url;
 
 	public String getName() {
 		return name;

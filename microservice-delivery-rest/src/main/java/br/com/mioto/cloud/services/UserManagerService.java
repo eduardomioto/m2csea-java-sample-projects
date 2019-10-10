@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserManagerService {
 
-	@Value("${services.user-manager.name}")
+    @Value("User Manager Service")
     private String name;
 
-	@Value("${services.user-manager.url}")
-	private String url;
+    @Value("http://localhost:10017/user")
+    private String url;
 
 	public String getName() {
 		return name;

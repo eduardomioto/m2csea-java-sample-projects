@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class MailRelayService {
 
-	@Value("${services.mail-relay.name}")
+    @Value("Mail Relay Service")
     private String name;
 
-	@Value("${services.mail-relay.url}")
-	private String url;
+    @Value("http://localhost:10017/user")
+    private String url;
 
 	public String getName() {
 		return name;

@@ -9,16 +9,6 @@ spring:
   consul:
    host: 127.0.0.1
    port: 8500
- services:
-  access-manager:
-    url: http://localhost:10001/access
-    name: Access Manager
-  user-manager:
-    url: http://localhost:10008/user
-    name: User Manager
-  fare:
-    url: http://localhost:10008/fare
-    name: Fare Calculator
 ---
 spring:
  profiles: dev
@@ -26,14 +16,3 @@ spring:
   consul:
    host: consul
    port: 8500
- services:
-  access-manager:
-    url: http://access-manager:10001/access
-    name: Access Manager
-  user-manager:
-    url: http://user-manager:10008/user
-    name: User Manager
-  fare:
-    url: http://fare:10008/fare
-    name: Fare Calculator
-

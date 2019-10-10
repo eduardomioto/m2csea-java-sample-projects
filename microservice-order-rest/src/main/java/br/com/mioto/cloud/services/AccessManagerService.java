@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccessManagerService {
 
-	@Value("${services.access-manager.name}")
+    @Value("Access Manager Service")
     private String name;
 
-	@Value("${services.access-manager.url}")
-	private String url;
+    @Value("http://localhost:10017/user")
+    private String url;
 
 	public String getName() {
 		return name;

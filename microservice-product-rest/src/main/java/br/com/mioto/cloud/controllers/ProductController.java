@@ -11,13 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import br.com.mioto.cloud.dao.ResponseTimeDAO;
-import br.com.mioto.cloud.services.AccessManagerService;
-import br.com.mioto.cloud.services.FareService;
-import br.com.mioto.cloud.vo.Access;
-import br.com.mioto.cloud.vo.Fare;
 import br.com.mioto.cloud.vo.Product;
 
 @RequestMapping( value = "/products" )
@@ -27,22 +22,12 @@ public class ProductController {
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
-    private AccessManagerService accessManagerService;
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
-    private FareService fareService;
-
-    @Autowired
     ResponseTimeDAO responseTimeDAO;
 
 	@RequestMapping( method = RequestMethod.GET )
 	@ResponseBody
 	public List<Product> getProducts() {
 
-		final Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
 		final List<Product> list = new ArrayList<Product>();
 
 		Product product = new Product();
@@ -75,8 +60,6 @@ public class ProductController {
 		final Product product = new Product();
 		product.setId(id);
 
-		final Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
-
 		if(id  == 1){
 			product.setName("Product A");
 			product.setPrice(15.50);
@@ -99,8 +82,6 @@ public class ProductController {
 		final Product product = new Product();
 		product.setId(id);
 
-        final Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
-
 		if(id  == 1){
 			product.setName("Product A");
 			product.setPrice(15.50);
@@ -116,11 +97,8 @@ public class ProductController {
 		}
 
         log.info("CalculateFare >> Preparing to Send Call");
-        final Fare fare = restTemplate.getForObject(fareService.getUrl(), Fare.class);
-        log.info("fare: {}", fare);
         log.info("CalculateFare <<  Fare Received Successfully");
 
-		product.setFare(fare);
 		return product;
 	}
 }

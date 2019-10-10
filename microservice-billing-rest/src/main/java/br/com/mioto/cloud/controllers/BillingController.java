@@ -19,12 +19,6 @@ public class BillingController {
 
 	private static final Logger log = LoggerFactory.getLogger(BillingController.class);
 
-	//@Autowired
-	//private AccessManagerService accessManagerService;
-
-    //@Autowired
-    //private RestTemplate restTemplate;
-
     @Autowired
     ResponseTimeDAO responseTimeDAO;
 
@@ -33,8 +27,6 @@ public class BillingController {
 	public Billing getBilling() {
 
 		log.info("Basket Rest Service >> getDelivery");
-
-		//Access access = restTemplate.getForObject(accessManagerService.getUrl(), Access.class);
 
 		final Billing billing = new Billing();
 		billing.setPaymentDate(new Date());

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mioto.cloud.dao.ResponseTimeDAO;
-import br.com.mioto.cloud.services.AccessManagerService;
 import br.com.mioto.cloud.vo.Basket;
 
 @RequestMapping( value = "/basket" )
@@ -17,9 +16,6 @@ import br.com.mioto.cloud.vo.Basket;
 public class BasketController {
 
 	private static final Logger log = LoggerFactory.getLogger(BasketController.class);
-
-	@Autowired
-	private AccessManagerService accessManagerService;
 
     @Autowired
     ResponseTimeDAO responseTimeDAO;

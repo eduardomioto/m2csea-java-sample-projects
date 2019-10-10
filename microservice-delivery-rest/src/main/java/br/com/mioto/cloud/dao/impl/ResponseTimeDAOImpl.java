@@ -15,7 +15,7 @@ public class ResponseTimeDAOImpl extends BaseDAOImpl implements ResponseTimeDAO 
    @Override
 public void storeResponseTime(String microservice, long responseTime) throws SQLException {
        final Connection conn =  getConnection();
-       final String query = "INSERT INTO response_time (microservice, response_time) VALUES(?, ?)";
+       final String query = "INSERT INTO response_time (microservice, response_time, dt_transaction) VALUES(?, ?, NOW())";
 
        final PreparedStatement preparedStmt = conn.prepareStatement(query);
        preparedStmt.setString (1, microservice);

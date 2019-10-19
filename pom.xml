@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
 		 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>br.com.mioto.cloud.mc2pd</groupId>
-    <artifactId>mc2pd</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0</version>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.mioto.cloud.mc2pd</groupId>
+	<artifactId>mc2pd</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
 
-    <!-- sub modules -->
-    <modules>
-        <module>microservice-access-manager-rest</module>
-        <module>microservice-basket-rest</module>
-        <module>microservice-billing-rest</module>
-        <module>microservice-delivery-rest</module>
-	<module>microservice-fare-rest</module>
-	<module>microservice-inventory-rest</module>
-	<module>microservice-order-rest</module>
-	<module>microservice-product-rest</module>
-	<module>microservice-user-manager-rest</module>		
-    </modules>
-	
+	<!-- sub modules -->
+	<modules>
+		<module>microservice-access-manager-rest</module>
+		<module>microservice-fare-rest</module>
+		<module>microservice-order-rest</module>
+		<module>microservice-product-rest</module>
+		<module>microservice-user-manager-rest</module>
+	</modules>
+
 </project>

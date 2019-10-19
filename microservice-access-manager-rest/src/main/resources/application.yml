@@ -14,4 +14,4 @@ management:
     enabled: false
 
 server:
-  port: 10001
+  port: 17001

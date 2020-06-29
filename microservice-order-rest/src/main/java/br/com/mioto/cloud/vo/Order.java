@@ -1,6 +1,5 @@
 package br.com.mioto.cloud.vo;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Order {

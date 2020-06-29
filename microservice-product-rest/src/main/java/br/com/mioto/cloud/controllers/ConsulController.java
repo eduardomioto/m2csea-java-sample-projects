@@ -1,24 +1,27 @@
 package br.com.mioto.cloud.controllers;
 
-import br.com.mioto.cloud.vo.Microservice;
-import com.ecwid.consul.v1.ConsulClient;
-import com.ecwid.consul.v1.kv.model.GetValue;
-import com.google.gson.Gson;
+import java.util.Base64;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import com.ecwid.consul.v1.ConsulClient;
+import com.ecwid.consul.v1.kv.model.GetValue;
+import com.google.gson.Gson;
+
+import br.com.mioto.cloud.vo.Microservice;
 
 /**
  * Created by mioto on 22/05/17.
@@ -78,22 +81,22 @@ public class ConsulController {
     }
 
     private String getKV(){
-        GetValue getValue = consulClient.getKVValue(appName).getValue();
+        final GetValue getValue = consulClient.getKVValue(appName).getValue();
         return getValue == null ? null : new String(Base64.getDecoder().decode(getValue.getValue()));
     }
 
     private String getDependencyJson(){
-        Microservice dependency = new Microservice();
+        final Microservice dependency = new Microservice();
 
-        Set<Microservice> dependencyList = new HashSet<Microservice>();
+        final Set<Microservice> dependencyList = new HashSet<Microservice>();
         dependencyList.add(dependency);
 
-        Microservice kv = new Microservice();
+        final Microservice kv = new Microservice();
         kv.setVersion("1.0");
         kv.setDependencies(dependencyList);
 
-        Gson g = new Gson();
-        String kvJson = g.toJson(kv);
+        final Gson g = new Gson();
+        final String kvJson = g.toJson(kv);
         return kvJson;
     }
 
@@ -102,9 +105,9 @@ public class ConsulController {
     }
 
     public boolean isKVUpdated(){
-        String value =  getKV();
-        String updatedDependecyJson = getDependencyJson();
-        if(value != null && value.equals(updatedDependecyJson)){
+        final String value =  getKV();
+        final String updatedDependecyJson = getDependencyJson();
+        if((value != null) && value.equals(updatedDependecyJson)){
             return true;
         }
         return false;
